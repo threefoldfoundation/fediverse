@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "grid3_client": "^1.5.0-rc1",
+    "ts-node": "^10.9.1"
+  }
+}
