@@ -30,9 +30,9 @@ const location = "Belgium";
 const instanceType: string = instanceTypeEnum.small;
 
 // Config
-const sshKey: string  = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC8KhnjC8yi2Td7gMEiVmJfUNg1lXE457S+eW1jip0HW3MGLsKjXekauLbR7qcSOKUGURZlsw2KbRdOZnWbQovs24YdevUos/9XIHxFL+mJEy+5gyHuU5Z/yGcuW7O6Qj5xtwvBwe/kWnMtgEd2xXxQqEY3ZHkVh++mA/eqbhikMIsM7Qi5SKBT210+7KT5989BbUpk9e43koFNkVPCXgDR5+frhbEvCq06OVAE8vuEQ/C6EW1ZKn65nVt2z0kA7c8rUE0sEZRnI35oCEwazMlxiPm9B67GryoO7bkTvIrencFHeOrR3/7htjGxFEnJw6yyiUJtSZVP/bbRcPZ6yJtCMF03nK4IdXsHblyjXXu7u3M+7nrx6KBjew2bOHlUAU52MPOPpyJFADwM66t7P7hxIDJ3Nubwufxukqt+VasJSWI6GN9rtk6Cj1Ro2N2JJ+a4vZSdxl5RrPhujfkh87Vptxncl5G8q7oSjfMXAjk22rsJ+nuYczn57SD5PxYGjO0= mahmmoud.hassanein@gmail.com";
-const network = NetworkEnv.dev;
-const mnemonic = `actual reveal dish guilt inner film scheme between lonely myself material replace`;
+const sshKey: string  = "ADD SSH-KEY HERE";
+const network = NetworkEnv.dev; // dev, qa, test, or main
+const mnemonic = `ADD MNEMONICS HERE`;
 const rmb_proxy = true;
 const storeSecret = `secret`;
 
@@ -43,6 +43,13 @@ let config = {
         storeSecret: storeSecret,
         ssh_key: sshKey,
 };
+
+async function mastodonProvider(playGround: PlayGround) {
+    // init and deploy machine for mastodon with domain name.
+    return await playGround.deploy();
+    // uncomment the clean method to remove the deployments you have deployed.
+    // return await playGround.clean();
+}
 
 function log(message: Object) {
     console.log(inspect(message, { showHidden: false, depth: null, colors: true }));
@@ -62,14 +69,6 @@ async function getClient(): Promise<GridClient> {
     );
     await gridClient.connect();
     return gridClient;
-}
-
-
-async function mastodonProvider(playGround: PlayGround) {
-    // init and deploy machine for mastodon with domain name.
-    return await playGround.deploy();
-    // uncomment the clean method to remove the deployments you have deployed.
-    // return await playGround.clean();
 }
 
 class PlayGround {
